@@ -1,0 +1,22 @@
+# dependencies
+node_modules/
+
+# next.js build output
+.next/
+out/
+
+# env / secrets
+.env
+.env*.local
+
+# logs
+*.log
+
+# prisma local db
+*.db
+prisma/dev.db*
+
+# misc
+.DS_Store
+_*.mjs
+.wrangler/

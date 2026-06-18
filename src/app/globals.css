@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@200;300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Ethereal Consensus Terminal palette */
+  --void: #0a0a0f;
+  --void-2: #0d0d14;
+  --text-primary: #e8e6e1;
+  --text-secondary: #5a5853;
+  --amber: #d4a574;
+  --amber-glow: rgba(212, 165, 116, 0.4);
+  --moss: #7d9b8e;
+  --terracotta: #8b4943;
+  --border-faint: rgba(232, 230, 225, 0.08);
+  --border-soft: rgba(232, 230, 225, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--void);
+  color: var(--text-primary);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+@media (max-width: 768px) {
+  html, body {
+    cursor: auto;
+  }
+}
+
+::selection {
+  background: var(--amber);
+  color: var(--void);
+}
+
+/* Scrollbar - barely visible */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 165, 116, 0.2);
+  border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 165, 116, 0.4);
+}
+
+/* Typography classes */
+.font-display {
+  font-family: 'Inter', sans-serif;
+  font-weight: 200;
+  letter-spacing: -0.02em;
+}
+
+.font-serif-editorial {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+}
+
+.font-mono-soul {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300;
+}
+
+/* Noise overlay - subtle film grain */
+.noise-overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: overlay;
+}
+
+/* Fade-in entrance */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fade-in 1.2s ease-out forwards;
+}
+
+@keyframes fade-in-slow {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in-slow {
+  animation: fade-in-slow 2s ease-out forwards;
+}
+
+/* Pulse glow for active elements */
+@keyframes pulse-amber {
+  0%, 100% { box-shadow: 0 0 0 0 var(--amber-glow); }
+  50% { box-shadow: 0 0 20px 4px var(--amber-glow); }
+}
+
+.pulse-amber {
+  animation: pulse-amber 2.5s ease-in-out infinite;
+}
+
+/* Typewriter cursor */
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.typewriter-cursor::after {
+  content: '▊';
+  display: inline-block;
+  margin-left: 2px;
+  color: var(--amber);
+  animation: blink 1s step-end infinite;
+}
+
+/* Subtle text breathing for empty states */
+@keyframes breathe {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
+.breathe {
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/* Slow float for orbs */
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-10px) translateX(5px); }
+  66% { transform: translateY(5px) translateX(-5px); }
+}
+
+/* Dotted background pattern - very subtle */
+.dotted-bg {
+  background-image: radial-gradient(rgba(232, 230, 225, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Glass panel */
+.glass-panel {
+  background: rgba(13, 13, 20, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-faint);
+}
+
+/* Inputs - minimal */
+.ethereal-input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-primary);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 300;
+  padding: 0.5rem 0;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.6s ease;
+}
+
+.ethereal-input:focus {
+  border-bottom-color: var(--amber);
+}
+
+.ethereal-input::placeholder {
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* Buttons - ritual style */
+.ritual-button {
+  background: transparent;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  padding: 0.75rem 2rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: none;
+  transition: all 0.6s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ritual-button:hover {
+  background: rgba(212, 165, 116, 0.08);
+  box-shadow: 0 0 30px var(--amber-glow);
+}
+
+.ritual-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Custom cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--amber);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+}
+
+.custom-cursor.expanded {
+  width: 40px;
+  height: 40px;
+  background: rgba(212, 165, 116, 0.15);
+  border: 1px solid var(--amber);
+}
+
+.custom-cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(212, 165, 116, 0.4);
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.6s ease;
+}
+
+@media (max-width: 768px) {
+  .custom-cursor, .custom-cursor-trail {
+    display: none;
+  }
+}
+
+/* Validator dots */
+.validator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  transition: all 0.6s ease;
+}
+
+.validator-dot.thinking {
+  background: var(--amber);
+  box-shadow: 0 0 12px var(--amber-glow);
+  animation: pulse-amber 1.5s ease-in-out infinite;
+}
+
+.validator-dot.answered {
+  background: var(--moss);
+  box-shadow: 0 0 8px rgba(125, 155, 142, 0.4);
+}
+
+.validator-dot.disagreed {
+  background: var(--terracotta);
+}
+
+/* Hide scrollbar but keep functional */
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Page transitions */
+.page-enter {
+  opacity: 0;
+}
+.page-enter-active {
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
