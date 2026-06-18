@@ -124,3 +124,20 @@ bun run lint     # ESLint
 ## Licencia
 
 Proyecto de investigación — Z.ai Research · Junio 2026
+
+## On-chain y despliegue
+
+Synthetic Souls funciona sobre GenLayer (testnet Bradbury) con consenso AI real. Conecta una wallet inyectada (MetaMask) para crear almas y conversar; cada nacimiento y cada respuesta se resuelven por consenso de validadores y se escriben on-chain.
+
+- **App en vivo:** https://synthetic-souls.pages.dev/
+- **Contrato (Bradbury):** `0xf2921aDbF551969446976ba088E5CD2e71382498`
+- **Explorer:** https://explorer-asimov.genlayer.com/address/0xf2921aDbF551969446976ba088E5CD2e71382498
+- **Red:** GenLayer Bradbury testnet
+- **Faucet:** https://faucet-asimov.genlayer.com/
+
+### Cómo funciona el consenso
+
+- **Nacimiento:** cinco validadores AI puntúan la coherencia del seed; el alma nace solo si convergen dentro de una banda de tolerancia. La personalidad emerge del acuerdo, no de un autor único.
+- **Conversación:** cada respuesta se resuelve por consenso de resonancia; la red re-ejecuta el juicio y solo registra lo que los validadores acuerdan.
+
+El estado on-chain son las almas, sus rasgos y el transcript completo de cada conversación. Solo se paga el fee de red.
